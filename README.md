@@ -52,6 +52,11 @@ Each functional module is designed to simplify database management for administr
 
 ---
 
+## 📄 Project Report
+ Download the full project report here:  [Project_Report.docx](./PROJECT_RAPPORT.docx)
+
+---
+
 ## 👥 Collaboration
 
 This project was developed as a **binome** (team of two) by **fatimazahrae03**  and myself. We collaborated closely to design, implement, and test the application, ensuring it meets the highest standards of functionality and security the professor asked us for.
