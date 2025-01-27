@@ -1,0 +1,74 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Performance Optimization</title>-->
+<!--    <style>-->
+<!--        table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--            margin: 20px 0;-->
+<!--        }-->
+<!--        table, th, td {-->
+<!--            border: 1px solid black;-->
+<!--        }-->
+<!--        th, td {-->
+<!--            padding: 10px;-->
+<!--            text-align: left;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Performance Optimization</h1>-->
+
+<!--&lt;!&ndash; Section 1: Slow Queries &ndash;&gt;-->
+<!--<section>-->
+<!--    <h2>Slow Queries</h2>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>SQL ID</th>-->
+<!--            <th>SQL Text</th>-->
+<!--            <th>Elapsed Time</th>-->
+<!--            <th>Executions</th>-->
+<!--            <th>Action</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; Loop through the slowQueries attribute &ndash;&gt;-->
+<!--        <th:block th:each="query : ${slowQueries}">-->
+<!--            <tr>-->
+<!--                <td th:text="${query['sql_id']}"></td>-->
+<!--                <td th:text="${query['sql_text']}"></td>-->
+<!--                <td th:text="${query['elapsed_time']}"></td>-->
+<!--                <td th:text="${query['executions']}"></td>-->
+<!--                <td>-->
+<!--                    <form action="/performance/optimize-query" method="post">-->
+<!--                        <input type="hidden" name="sqlId" th:value="${query['sql_id']}">-->
+<!--                        <button type="submit">Optimize</button>-->
+<!--                    </form>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </th:block>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    &lt;!&ndash; Display message after optimization &ndash;&gt;-->
+<!--    <p th:if="${optimizationMessage}" th:text="${optimizationMessage}"></p>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Section 2: Recalculate Table Statistics &ndash;&gt;-->
+<!--<section>-->
+<!--    <h2>Recalculate Table Statistics</h2>-->
+<!--    <form action="/performance/recalculate-stats" method="post">-->
+<!--        <label for="tableName">Table Name:</label>-->
+<!--        <input type="text" id="tableName" name="tableName" required>-->
+<!--        <button type="submit">Recalculate</button>-->
+<!--    </form>-->
+
+<!--    &lt;!&ndash; Display message after recalculating stats &ndash;&gt;-->
+<!--    <p th:if="${recalculateMessage}" th:text="${recalculateMessage}"></p>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->

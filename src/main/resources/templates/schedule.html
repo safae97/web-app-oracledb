@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurer la Planification</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #6d4c41;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 60%;
+            background-color: #d7ccc8;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #4e342e;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccb0a5;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #fbe9e7;
+            color: #4e342e;
+            box-sizing: border-box;
+        }
+
+        .form-container input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .form-container button {
+            background-color: #8d6e63;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .form-container button:hover {
+            background-color: #5d4037;
+        }
+
+        .back-button {
+            display: flex;
+            margin-top:2cm;
+            /*margin: 0 auto 20px auto;*/
+            padding: 8px 16px;
+            background-color: #8d6e63;
+            color: #fff;
+            align-self: flex-start;
+            margin-left: 100px;
+            margin-right: 100px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            align-self: center;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check-label {
+            margin-left: 8px;
+        }
+
+        .back-button:hover {
+            background-color: #5d4037;
+        }
+
+
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="/index" class="back-button">Back to Main Dahboard</a>
+
+<div class="container">
+    <div class="form-container">
+        <h1>Configurer la Planification de Sauvegarde</h1>
+        <form action="/schedule/configure" method="post" onsubmit="return formatDateTime()">
+            <label for="dateTime">Date et Heure de la Sauvegarde</label>
+            <input type="text" id="dateTime" name="dateTime" placeholder="yyyy-MM-dd HH:mm:ss" required>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="isIncremental" name="isIncremental" checked>
+                <label class="form-check-label" for="isIncremental">Sauvegarde Incrémentielle</label>
+            </div>
+
+            <button type="submit">Configurer la Sauvegarde</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. Tous droits réservés.</p>
+</footer>
+
+<script>
+    function formatDateTime() {
+        const dateTimeInput = document.getElementById("dateTime");
+        const dateTimeValue = dateTimeInput.value;
+
+        if (dateTimeValue) {
+            const formattedDateTime = dateTimeValue.replace("T", " ") + ":00";
+            dateTimeInput.value = formattedDateTime;
+            return true;
+        } else {
+            alert("Veuillez saisir une date et une heure valides.");
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

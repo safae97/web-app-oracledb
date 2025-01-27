@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Users List</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #6d4c41;
+        }
+
+        .action-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .action-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-container a:hover {
+            background-color: #5d4037;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-spacing: 0;
+            border: 2px solid #8d6e63;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            border-right: 1px solid #8d6e63;
+        }
+
+        thead th:last-child {
+            border-right: none;
+        }
+
+        tbody tr {
+            background-color: #d7ccc8;
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #efebe9;
+        }
+
+        tbody tr:hover {
+            background-color: #ccb0a5;
+        }
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+        tbody td {
+            padding: 12px;
+            text-align: center;
+            border-right: 1px solid #8d6e63;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        tbody td a {
+            color: #6d4c41;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        tbody td a:hover {
+            color: #4e342e;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            thead th, tbody td {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+
+    </style>
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this user?");
+        }
+    </script>
+</head>
+<body>
+<h1>Oracle Users List</h1>
+
+<div class="action-container">
+    <a href="/oracle-users/create">Create New User</a>
+    <a href="/oracle-users/user-actions">Actions</a>
+    <a href="/index" class="back-button">Back Main Dahboard</a>
+
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Account Status</th>
+        <th>Default Tablespace</th>
+        <th>Used Quota (Bytes)</th>
+        <th>Max Quota (Bytes)</th>
+        <th>Granted Roles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user['user_name']}"></td>
+        <td th:text="${user['account_status']}"></td>
+        <td th:text="${user['default_tablespace']}"></td>
+        <td th:text="${user['used_space']}"></td>
+        <td th:text="${user['quota']}"></td>
+        <td th:text="${user['granted_roles']}"></td>
+        <td>
+            <a th:href="@{/oracle-users/delete/{username}(username=${user['user_name']})}" onclick="return confirmDelete();">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+</body>
+</html>

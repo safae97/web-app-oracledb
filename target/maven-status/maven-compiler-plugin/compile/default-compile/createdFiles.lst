@@ -1,0 +1,6 @@
+TestEntity.class
+TestEntityService.class
+org\example\oracle\OracleApplication.class
+SecurityConfig.class
+TestEntityController.class
+TestEntityRepository.class

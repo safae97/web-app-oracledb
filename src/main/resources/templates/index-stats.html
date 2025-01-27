@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques d'Index</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #6d4c41;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 60%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #4e342e;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccb0a5;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #fbe9e7;
+            color: #4e342e;
+            box-sizing: border-box;
+        }
+
+        .form-container input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .form-container button {
+            background-color: #8d6e63;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #5d4037;
+        }
+
+        .back-button {
+            align-self: flex-start;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            align-self: center;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #5d4037;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Centering the form and message */
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .centered-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Collecte des Statistiques d'Index</h1>
+    <a href="/index" class="back-button">Back to Main Dashboard</a><br><br>
+
+    <!-- Formulaire pour collecter les statistiques -->
+    <div class="form-container">
+        <form th:action="@{/database/index-stats}" method="post">
+            <div class="mb-3">
+                <label for="owner" class="form-label">Propriétaire</label>
+                <input type="text" class="form-control" id="owner" name="owner" required>
+            </div>
+            <div class="mb-3">
+                <label for="indexName" class="form-label">Nom de l'Index</label>
+                <input type="text" class="form-control" id="indexName" name="indexName" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Collecter les Statistiques</button>
+        </form>
+    </div>
+
+    <div th:if="${stats != null}" class="form-container">
+        <h2>Statistiques de l'Index</h2>
+        <ul>
+            <li>Nom de l'Index : <span th:text="${stats['INDEX_NAME']}"></span></li>
+            <li>Dernière Analyse : <span th:text="${stats['LAST_ANALYZED']}"></span></li>
+        </ul>
+
+        <!-- Formulaire pour mettre à jour la date d'analyse -->
+        <div class="centered-form">
+            <form th:action="@{/database/update-index-stats}" method="post">
+                <input type="hidden" name="owner" th:value="${owner}">
+                <input type="hidden" name="indexName" th:value="${indexName}">
+                <button type="submit" class="btn btn-success">Mettre à jour la date d'analyse</button>
+            </form>
+        </div>
+
+        <!-- Message de succès après mise à jour -->
+        <div th:if="${message != null}" class="alert alert-success centered-message">
+            <p th:text="${message}"></p>
+        </div>
+    </div>
+
+    <a href="/database/index-stats" class="back-button">Retour à formulaire par defaut</a>
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+<script>
+    document.getElementById("owner").addEventListener("input", function () {
+        this.value = this.value.toUpperCase();
+    });
+</script>
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Sauvegardes</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+        }
+
+        header {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* Container */
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Card Style for History */
+        .history-card {
+            background-color: #d7ccc8;
+            border: 2px solid #8d6e63;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .history-card h2 {
+            font-size: 1.6em;
+            margin: 0 0 15px;
+            color: #5d4037;
+        }
+
+        .history-card pre {
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .history-card .btn {
+            background-color: #8d6e63;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+            display: block; /* Makes it a block element to take up full width */
+            text-align: center; /* Centers the text */
+            text-decoration: none; /* Removes the underline */
+        }
+
+
+        .history-card .btn:hover {
+            background-color: #5d4037;
+        }
+
+        /* Footer Style */
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Historique des Sauvegardes</h1>
+</header>
+
+<div class="container">
+    <div class="history-card">
+        <h2>Historique des Sauvegardes</h2>
+
+        <!-- Affichage de l'historique -->
+        <div th:if="${history}">
+            <pre th:text="${history}">Historique des sauvegardes...</pre>
+        </div>
+        <div th:if="${history == null}" class="alert alert-warning" role="alert">
+            Aucun historique de sauvegardes disponible.
+        </div>
+
+        <!-- Bouton de retour -->
+        <a href="/backup" class="btn">Retour à la page de sauvegarde</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

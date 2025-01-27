@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requêtes Lentes</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #6d4c41;
+        }
+
+        .action-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .action-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-container a:hover {
+            background-color: #5d4037;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-spacing: 0;
+            border: 2px solid #8d6e63;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            border-right: 1px solid #8d6e63;
+        }
+
+        thead th:last-child {
+            border-right: none;
+        }
+
+        tbody tr {
+            background-color: #d7ccc8;
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #efebe9;
+        }
+
+        tbody tr:hover {
+            background-color: #ccb0a5;
+        }
+
+        tbody td {
+            padding: 12px;
+            text-align: center;
+            border-right: 1px solid #8d6e63;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        tbody td a {
+            color: #6d4c41;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        tbody td a:hover {
+            color: #4e342e;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            thead th, tbody td {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5d4037;
+        }
+
+        .short-column {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Liste des 20 requêtes les plus lentes</h1>
+
+    <!-- Affichage des messages d'erreur ou de succès -->
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div class="action-container">
+        <a href="/index" class="back-button">Back to Main Dashboard</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">SQL ID</th>
+            <th scope="col" class="short-column">Texte de la Requête</th>
+            <th scope="col">Temps d'Exécution Moyen</th>
+            <th scope="col">Exécutions</th>
+            <th scope="col">Dernière Activation</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="query : ${slowQueries}">
+            <td th:text="${query.sqlId}"></td>
+            <td class="short-column" th:text="${query.sqlText}"></td>
+            <td th:text="${query.avgExecutionTime}"></td>
+            <td th:text="${query.executions}"></td>
+            <td th:text="${query.lastActiveTime}"></td>
+            <td>
+                <!-- Formulaire pour optimiser la requête -->
+                <form action="#" th:action="@{/slow-queries/optimize/{sqlId}(sqlId=${query.sqlId})}" method="post">
+                    <button type="submit" class="btn btn-warning">Optimiser</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

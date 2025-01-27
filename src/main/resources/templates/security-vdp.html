@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle VPD Management</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+            color: #6d4c41;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #5d4037;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 0 20px;
+            text-align: center;
+            color: #8d6e63;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: #e0d4c4;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: none;
+            background-color: #d7ccc8;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #d7ccc8;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            min-width: 300px;
+            box-sizing: border-box;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #4e342e;
+            font-weight: bold;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccb0a5;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        form input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            box-shadow: 0 0 5px rgba(141, 110, 99, 0.2);
+        }
+
+        form button {
+            background-color: #6d4c41;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #4e342e;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                width: 100%;
+            }
+        }
+
+        .action-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .action-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-container a:hover {
+            background-color: #5d4037;
+        }
+
+        .policy-container {
+            padding: 20px;
+        }
+
+        .policy-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .policy-container th,
+        .policy-container td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .policy-container th {
+            background-color: #e0d4c4;
+            text-align: center;
+        }
+
+        .table-header {
+            background-color: #8d6e63;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<h1>Oracle VPD Management</h1>
+<div class="action-container">
+    <a href="/index">Back to Main Dashboard</a>
+</div>
+
+<!-- VPD Policies -->
+<div class="policy-container" id="vpd-policy-container">
+    <h2>VPD Policies</h2>
+    <!-- Data will be dynamically inserted here -->
+</div>
+
+<div class="form-container">
+    <!-- Create VPD Policy -->
+    <form action="/api/security/vdp/policies" method="post">
+        <h2>Create VPD Policy</h2>
+        <label for="vpd-create-tableName">Table Name:</label>
+        <input type="text" id="vpd-create-tableName" name="tableName" required>
+
+        <label for="vpd-policyName">Policy Name:</label>
+        <input type="text" id="vpd-policyName" name="policyName" required>
+
+        <label for="vpd-statementTypes">Statement Types:</label>
+        <input type="text" id="vpd-statementTypes" name="statementTypes" required placeholder="SELECT, INSERT, UPDATE, DELETE">
+
+        <button type="submit">Create Policy</button>
+    </form>
+
+
+
+    <form action="/api/security/vdp/drop" method="post">
+        <h2>Drop VPD Policy</h2>
+        <label for="vpd-drop-tableName">Table Name:</label>
+        <input type="text" id="vpd-drop-tableName" name="tableName" required>
+        <label for="vpd-drop-policyName">Policy Name:</label>
+        <input type="text" id="vpd-drop-policyName" name="policyName" required>
+        <button type="submit">Drop Policy</button>
+    </form>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Security Admin. All rights reserved.</p>
+</footer>
+
+<script>
+    // Fetch VPD policies and populate the section
+    fetch('/api/security/vdp/policies')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const policyContainer = document.querySelector('#vpd-policy-container');
+            if (data.length === 0) {
+                policyContainer.innerHTML += '<p>No VPD policies available.</p>';
+            } else {
+                const grouped = data.reduce((acc, policy) => {
+                    acc[policy.tableName] = acc[policy.tableName] || [];
+                    acc[policy.tableName].push(policy);
+                    return acc;
+                }, {});
+
+                for (const tableName in grouped) {
+                    policyContainer.innerHTML += `<div class="table-header">Table: ${tableName}</div>`;
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Policy Name</th>
+                                <th>Created At</th>
+                                <th>Statement Types</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${grouped[tableName].map(policy => `
+                                <tr>
+                                    <td>${policy.policyName}</td>
+                                    <td>${policy.createdAt}</td>
+                                    <td>${policy.statementTypes}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    `;
+                    policyContainer.appendChild(table);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching VPD policies:', error);
+            document.querySelector('#vpd-policy-container').innerHTML = '<p>Error loading VPD policies.</p>';
+        });
+        document.getElementById('delete-policy-btn').addEventListener('click', () => {
+        const tableName = document.getElementById('vpd-drop-tableName').value;
+        const policyName = document.getElementById('vpd-drop-policyName').value;
+
+        fetch(`/api/security/vdp/policies/${policyName}`, {
+        method: 'DELETE',
+    })
+        .then(response => {
+        if (response.ok) {
+        alert('Policy dropped successfully.');
+    } else {
+        alert('Failed to drop policy.');
+    }
+    })
+        .catch(error => console.error('Error:', error));
+    });
+
+
+</script>
+
+</body>
+
+</html>

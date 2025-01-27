@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Security Actions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+            color: #6d4c41;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #5d4037;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 0 20px;
+            text-align: center;
+            color: #8d6e63;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: #e0d4c4;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: none;
+            background-color: #d7ccc8;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #d7ccc8;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            min-width: 300px;
+            box-sizing: border-box;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #4e342e;
+            font-weight: bold;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccb0a5;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        form input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            box-shadow: 0 0 5px rgba(141, 110, 99, 0.2);
+        }
+
+        form button {
+            background-color: #6d4c41;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #4e342e;
+        }
+
+        form .checkbox-group {
+            margin: 10px 0;
+        }
+
+        form .checkbox-group label {
+            font-size: 0.9em;
+            color: #6d4c41;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                width: 100%;
+            }
+        }
+
+        .action-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .action-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-container a:hover {
+            background-color: #5d4037;
+        }
+
+        /* Table Styles */
+        .config-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .config-table th,
+        .config-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .config-table th {
+            background-color: #e0d4c4;
+        }
+
+    </style>
+</head>
+
+<body>
+<h1>Oracle Security Actions</h1>
+<div class="action-container">
+    <a href="/index">Back to Main Dashboard</a>
+</div>
+
+<!-- TDE Configurations Table -->
+<h2>TDE Configurations</h2>
+<table class="config-table" id="tde-config-table">
+    <thead>
+    <tr>
+        <th>Table Name</th>
+        <th>Column Name</th>
+        <th>Encryption Algorithm</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Data will be dynamically inserted here -->
+    </tbody>
+</table>
+
+<div class="form-container">
+
+    <!-- Enable TDE -->
+    <form action="/api/security/tde/enable" method="post">
+        <h2>Enable TDE</h2>
+        <label for="tde-tableName">Table Name:</label>
+        <input type="text" id="tde-tableName" name="tableName" required>
+
+        <label for="tde-columnName">Column Name:</label>
+        <input type="text" id="tde-columnName" name="columnName" required>
+
+        <label for="tde-algorithm">Encryption Algorithm:</label>
+        <input type="text" id="tde-algorithm" name="algorithm" required>
+
+        <label for="tde-username">Username:</label>
+        <input type="text" id="tde-username" name="username" required>
+
+        <button type="submit">Enable TDE</button>
+    </form>
+
+
+    <!-- Disable TDE -->
+    <form action="/api/security/tde/disable" method="post">
+        <h2>Disable TDE</h2>
+        <label for="disable-tde-tableName">Table Name:</label>
+        <input type="text" id="disable-tde-tableName" name="tableName" required>
+        <label for="disable-tde-columnName">Column Name:</label>
+        <input type="text" id="disable-tde-columnName" name="columnName" required>
+        <button type="submit">Disable TDE</button>
+    </form>
+
+
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Security Admin. All rights reserved.</p>
+</footer>
+
+<script>
+    // Fetch TDE configurations and populate the table
+    fetch('/api/security/tde/configurations')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const tableBody = document.querySelector('#tde-config-table tbody');
+            // Check if there is data to display
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="3">No TDE configurations available.</td></tr>';
+            } else {
+                data.forEach(config => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${config.tableName}</td>
+                    <td>${config.columnName}</td>
+                    <td>${config.encryptionAlgorithm}</td>
+                `;
+                    tableBody.appendChild(row);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching TDE configurations:', error);
+            const tableBody = document.querySelector('#tde-config-table tbody');
+            tableBody.innerHTML = '<tr><td colspan="3">Error loading TDE configurations.</td></tr>';
+        });
+
+</script>
+
+</body>
+
+</html>

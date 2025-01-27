@@ -1,0 +1,148 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="fr">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Logs d'Audit</title>-->
+<!--    <style>-->
+<!--        /* General Styles */-->
+<!--        body {-->
+<!--            font-family: 'Georgia', serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f5efe0;-->
+<!--            color: #4e342e;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #6d4c41;-->
+<!--            color: #fbe9e7;-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            gap: 20px;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            font-size: 2.5em;-->
+<!--            margin: 0;-->
+<!--            font-weight: normal;-->
+<!--        }-->
+
+<!--        /* Container for content */-->
+<!--        .container {-->
+<!--            width: 85%;-->
+<!--            margin: 40px auto;-->
+<!--            padding: 20px;-->
+<!--            background-color: #ffffff;-->
+<!--            border-radius: 12px;-->
+<!--            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);-->
+<!--        }-->
+
+<!--        .alert {-->
+<!--            background-color: #8d6e63;-->
+<!--            color: #fff;-->
+<!--            border-radius: 6px;-->
+<!--            padding: 15px;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        h4 {-->
+<!--            font-size: 1.8em;-->
+<!--            color: #5d4037;-->
+<!--        }-->
+
+<!--        .list-group-item {-->
+<!--            background-color: #d7ccc8;-->
+<!--            border: 1px solid #8d6e63;-->
+<!--            border-radius: 6px;-->
+<!--            margin-bottom: 10px;-->
+<!--            color: #4e342e;-->
+<!--        }-->
+
+<!--        .btn-secondary {-->
+<!--            background-color: #8d6e63;-->
+<!--            color: #fff;-->
+<!--            border: none;-->
+<!--            padding: 10px 15px;-->
+<!--            font-size: 1em;-->
+<!--            border-radius: 6px;-->
+<!--            transition: background-color 0.3s ease;-->
+<!--            text-decoration: none; /* Removes underline */-->
+<!--        }-->
+
+<!--        .btn-secondary:hover {-->
+<!--            background-color: #5d4037;-->
+<!--        }-->
+
+<!--        /* Center the button */-->
+<!--        .btn-center {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        footer {-->
+<!--            background-color: #6d4c41;-->
+<!--            color: #fbe9e7;-->
+<!--            padding: 15px;-->
+<!--            text-align: center;-->
+<!--            margin-top: 40px;-->
+<!--        }-->
+
+<!--        /* Responsive Design */-->
+<!--        @media (max-width: 768px) {-->
+<!--            .container {-->
+<!--                width: 95%;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @media (max-width: 480px) {-->
+<!--            h1 {-->
+<!--                font-size: 2em;-->
+<!--            }-->
+<!--            h4 {-->
+<!--                font-size: 1.5em;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<header>-->
+<!--    <h1>Logs d'Audit</h1>-->
+<!--</header>-->
+
+<!--<div class="container">-->
+<!--    &lt;!&ndash; Affichage des messages flash &ndash;&gt;-->
+<!--    <div th:if="${message}" class="alert alert-info" role="alert">-->
+<!--        <span th:text="${message}"></span>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Affichage des logs &ndash;&gt;-->
+<!--    <div th:if="${logs != null}">-->
+<!--        <h4>Logs d'audit :</h4>-->
+<!--        <ul class="list-group">-->
+<!--            <li th:each="log : ${logs}" class="list-group-item">-->
+<!--                <span th:text="${log}"></span>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Centered Button &ndash;&gt;-->
+<!--    <div class="btn-center">-->
+<!--        <a href="/audit-logs/search" class="btn-secondary">Rechercher d'autres logs</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<footer>-->
+<!--    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>-->
+<!--</footer>-->
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+
+<!--</html>-->

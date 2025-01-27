@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport d'Optimisation</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            text-align: center;
+        }
+
+        header {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Card for the report */
+        .card {
+            background-color: #d7ccc8;
+            border: 2px solid #8d6e63;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .card h5 {
+            font-size: 1.6em;
+            margin: 0 0 15px;
+            color: #5d4037;
+        }
+
+        .alert-success {
+            background-color: #81c784;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .alert-heading {
+            font-size: 1.5em;
+        }
+
+        .btn-primary {
+            background-color: #8d6e63;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #5d4037;
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Rapport d'Optimisation</h1>
+</header>
+
+<div class="container">
+    <a href="/slow-queries" class="btn btn-primary">Retour à la Liste des Requêtes</a>
+<br><br>
+    <div class="card">
+        <div class="alert alert-success">
+            <h5 class="alert-heading">Optimisation Réussie !</h5>
+            <p th:text="${tuningReport}">Le rapport d'optimisation est généré ici...</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle DB Admin</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* Main layout */
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+
+
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            color: #5d4037;
+            margin-bottom: 15px;
+        }
+
+        .sidebar button {
+            background-color: #8d6e63;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .sidebar button:hover {
+            background-color: #5d4037;
+        }
+
+        .center-image {
+            width: 30%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 45%;
+            }
+
+            .center-image {
+                width: 45%;
+            }
+
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 90%;
+            }
+
+            .center-image {
+                width: 90%;
+            }
+        }
+        .logout-button {
+            background-color: #8d6e63;
+            color: #fff;
+            border: none;
+            /*padding: 10px 15px;*/
+            margin-top: 5cm;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .logout-button:hover {
+            background-color: #5d4037;
+        }
+
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Oracle Database Administration</h1>
+</header>
+
+<div class="main-container">
+    <button class="logout-button" onclick="location.href='/logout'">LOG OUT</button>
+
+    <div class="sidebar">
+        <h2>Manage Users</h2>
+        <button onclick="location.href='/oracle-users'">See</button>
+        <h2>Performance Dashboard</h2>
+        <button onclick="location.href='/performance'">See</button>
+        <h2>RMAN</h2>
+        <button onclick="location.href='/backup'">See</button>
+    </div>
+
+    <div class="center-image">
+        <img src="/img.png" alt="Oracle DB Admin Image">
+    </div>
+
+
+    <div class="sidebar">
+        <h2>Security Settings</h2>
+        <button onclick="location.href='/audit-logs/search'">See</button>
+        <h2>Slow Queries</h2>
+        <button onclick="location.href='/slow-queries'">See</button>
+        <h2>Database Options</h2>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="location.href='/database/table-stats'">See Tables</button>
+            <button onclick="location.href='/database/index-stats'">See Indexes</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

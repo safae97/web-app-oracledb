@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle User Actions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe0;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+            color: #6d4c41;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #5d4037;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 0 20px;
+            text-align: center;
+            color: #8d6e63;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: #e0d4c4;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: none;
+            background-color: #d7ccc8;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        footer {
+            background-color: #6d4c41;
+            color: #fbe9e7;
+            padding: 15px;
+            text-align: center;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #d7ccc8;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            min-width: 300px;
+            box-sizing: border-box;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #4e342e;
+            font-weight: bold;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccb0a5;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        form input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            box-shadow: 0 0 5px rgba(141, 110, 99, 0.2);
+        }
+
+        form button {
+            background-color: #6d4c41;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #4e342e;
+        }
+
+        form .checkbox-group {
+            margin: 10px 0;
+        }
+
+        form .checkbox-group label {
+            font-size: 0.9em;
+            color: #6d4c41;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                width: 100%;
+            }
+        }
+        .action-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .action-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-container a:hover {
+            background-color: #5d4037;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Oracle User Actions</h1><div class="action-container">
+    <a href="/oracle-users">Back to User List</a></div>
+
+<div class="form-container">
+
+    <form action="/oracle-users/change-quota" method="post">
+        <h2>Change Quota</h2>
+        <label for="quota-username">Username:</label>
+        <input type="text" id="quota-username" name="username" required>
+        <label for="quota-quota">Quota (MB):</label>
+        <input type="number" id="quota-quota" name="quota" required>
+        <label for="quota-tablespace">Tablespace:</label>
+        <input type="text" id="quota-tablespace" name="tablespace" required>
+        <button type="submit">Update Quota</button>
+    </form>
+
+    <form action="/oracle-users/change-tablespace" method="post">
+        <h2>Change Default Tablespace</h2>
+        <label for="tablespace-username">Username:</label>
+        <input type="text" id="tablespace-username" name="username" required>
+        <label for="tablespace-tablespace">Tablespace:</label>
+        <input type="text" id="tablespace-tablespace" name="tablespace" required>
+        <button type="submit">Update Tablespace</button>
+    </form>
+
+    <form action="/oracle-users/grant-role" method="post">
+        <h2>Grant Role</h2>
+        <label for="role-username">Username:</label>
+        <input type="text" id="role-username" name="username" required>
+        <label for="role-role">Role:</label>
+        <input type="text" id="role-role" name="role" required>
+        <div class="checkbox-group">
+            <label>
+                <input type="checkbox" id="role-adminOption" name="adminOption"> With Admin Option
+            </label>
+        </div>
+        <button type="submit">Grant Role</button>
+    </form>
+
+    <form action="/oracle-users/lock-account" method="post">
+        <h2>Lock Account</h2>
+        <label for="lock-username">Username:</label>
+        <input type="text" id="lock-username" name="username" required>
+        <button type="submit">Lock Account</button>
+    </form>
+
+    <form action="/oracle-users/unlock-account" method="post">
+        <h2>Unlock Account</h2>
+        <label for="unlock-username">Username:</label>
+        <input type="text" id="unlock-username" name="username" required>
+        <button type="submit">Unlock Account</button>
+    </form>
+
+    <form action="/oracle-users/change-password-expiration" method="post">
+        <h2>Password Expiration</h2>
+        <label for="expiration-expirationDays">Expiration (days):</label>
+        <input type="number" id="expiration-expirationDays" name="expirationDays" required>
+        <button type="submit">Update Expiration</button>
+    </form>
+
+    <form action="/oracle-users/change-lock-time" method="post">
+        <h2>Account Lock Time</h2>
+        <label for="lockTime-lockTime">Lock Time (minutes):</label>
+        <input type="number" id="lockTime-lockTime" name="lockTime" required>
+        <button type="submit">Update Lock Time</button>
+    </form>
+
+</div>
+<footer>
+    <p>&copy; 2025 Oracle Database Admin. All rights reserved.</p>
+</footer>
+</body>
+
+</html>
