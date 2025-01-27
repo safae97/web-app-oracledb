@@ -1,12 +1,12 @@
 # Oracle Database Administration Web Application
 
-## Introduction
+## 🌐 Introduction
 
 This project presents the development of a web application for Oracle database administration, leveraging the power of modern web technologies and the J2EE ecosystem. The goal is to provide an intuitive, secure, and robust platform for efficiently managing Oracle databases. Built with **Spring Boot** for the backend and **Thymeleaf** for the frontend, the application interacts with an Oracle database running in a **Docker** container, ensuring flexibility and ease of deployment.
 
 ---
 
-## Objective
+## 🎯 Objective
 
 The primary objective of this project is to create a comprehensive web solution for Oracle database administration. The application facilitates various database operations, including:
 
@@ -20,7 +20,7 @@ Each functional module is designed to simplify database management for administr
 
 ---
 
-## Technologies
+## 🛠️Technologies
 
 ### Backend:
 - **Spring Boot**: A robust Java framework for building enterprise-level applications. It simplifies dependency management, application configuration, and integration of various components.
@@ -42,7 +42,7 @@ Each functional module is designed to simplify database management for administr
 
 ---
 
-## Installation Documentation
+## 📥  Installation Documentation
 
 1. **Install Docker Desktop**
 2. **Install Oracle DB 23ai Image in Docker**
@@ -52,14 +52,14 @@ Each functional module is designed to simplify database management for administr
 
 ---
 
-## Collaboration
+## 👥 Collaboration
 
 This project was developed as a **binome** (team of two) by **fatimazahrae03**  and myself. We collaborated closely to design, implement, and test the application, ensuring it meets the highest standards of functionality and security the professor asked us for.
 
 
 ---
 
-Feel free to explore the code and contribute to the project. Your feedback and suggestions are highly appreciated! 🚀
+🚀 Feel free to explore the code and contribute to the project. Your feedback and suggestions are highly appreciated! 🚀
 
 ---
 
