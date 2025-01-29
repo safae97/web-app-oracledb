@@ -59,7 +59,7 @@ Each functional module is designed to simplify database management for administr
 
 ## 👥 Collaboration
 
-This project was developed as a **binome** (team of two) by **fatimazahrae03**  and myself. We collaborated closely to design, implement, and test the application, ensuring it meets the highest standards of functionality and security the professor asked us for.
+This project was developed as a **binome** (team of two) by  [@fatimazahrae03](https://github.com/fatimazahrae03) and myself. We collaborated closely to design, implement, and test the application, ensuring it meets the highest standards of functionality and security the professor asked us for.
 
 
 ---
